@@ -7,6 +7,7 @@
 
 # User-specific stuff:
 .idea/workspace.xml
+*.workspace.xml
 .idea/tasks.xml
 .idea/dictionaries
 .idea/vcs.xml
@@ -50,8 +51,18 @@ fabric.properties
 ### Intellij Patch ###
 # Comment Reason: https://github.com/joeblau/gitignore.io/issues/186#issuecomment-215987721
 
-# *.iml
+*.iml
 # modules.xml
 *.log
 /pom.xml
 /target/
+
+*.iml
+.gradle
+/local.properties
+/.idea/workspace.xml
+/.idea/libraries
+.DS_Store
+/build
+/captures
+.externalNativeBuild
