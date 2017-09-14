@@ -3,8 +3,8 @@ Feature: Doing Math
   I want to be able to do math functions
   So that I can get answers
 
-  @add
-  Scenario Outline: Adding numbers
+  @add @subtract
+  Scenario Outline: Adding and subtracting numbers
     Given I have two numbers "<firstNum>" and "<secondNum>"
     When I "<calcMethod>" them
     Then the total will be "<total>"
