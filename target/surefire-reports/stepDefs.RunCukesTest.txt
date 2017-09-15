@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: stepDefs.RunCukesTest
 -------------------------------------------------------------------------------
-Tests run: 8, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 13.754 sec - in stepDefs.RunCukesTest
+Tests run: 8, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 14.225 sec - in stepDefs.RunCukesTest
