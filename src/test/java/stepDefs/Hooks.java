@@ -4,6 +4,7 @@ import cucumber.api.java.After;
 import cucumber.api.java.Before;
 import helpers.baseClass;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -17,13 +18,35 @@ public class Hooks extends baseClass {
 
         WebDriverWait wait;
 
-        String browser_name = "chrome";
-        DesiredCapabilities capabilities = new DesiredCapabilities();
-        capabilities.setBrowserName(browser_name);
 
-        //driver = new RemoteWebDriver(new URL("https://turbo-seleniumgrid.hesos.net/wd/hub"), capabilities);
+        String strBrowser = null;
+        try {
+            strBrowser = System.getProperty("BROWSER").toLowerCase();
+        } catch (Exception e) {
+            strBrowser = "chrome";
+        }
 
-        driver = new ChromeDriver();
+
+        switch (strBrowser.toLowerCase()) {
+            case "chrome":
+                String browser_name = "chrome";
+                DesiredCapabilities capabilities = new DesiredCapabilities();
+                capabilities.setBrowserName(browser_name);
+                driver = new ChromeDriver();
+                break;
+            case "firefox":
+                System.setProperty("webdriver.gecko.driver", "geckodriver");
+                DesiredCapabilities cap = DesiredCapabilities.firefox();
+                cap.setCapability("marionette", true);
+                cap.setBrowserName("firefox");
+                driver = new FirefoxDriver(cap);
+                break;
+        }
+
+
+        //for Grid
+        //driver = new RemoteWebDriver(new URL("https://turbo-seleniumgrid.hesos.net/wd/hub"), cap);
+
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
         driver.manage().window().maximize(); // Always maximize firefox on windows
 

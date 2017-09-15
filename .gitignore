@@ -58,7 +58,7 @@ fabric.properties
 /target/
 
 
-
+.idea/
 /local.properties
 /.idea/workspace.xml
 /.idea/libraries
