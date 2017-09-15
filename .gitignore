@@ -56,7 +56,7 @@ fabric.properties
 *.log
 /pom.xml
 /target/
-
+target/
 
 .idea/
 /local.properties
