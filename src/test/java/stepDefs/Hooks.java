@@ -5,11 +5,14 @@ import cucumber.api.java.Before;
 import helpers.baseClass;
 import io.selendroid.standalone.SelendroidLauncher;
 import org.apache.log4j.Logger;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 public class Hooks extends baseClass {
@@ -30,12 +33,8 @@ public class Hooks extends baseClass {
             strBrowser = "chrome";
         }
 
-
         switch (strBrowser.toLowerCase()) {
             case "chrome":
-                String browser_name = "chrome";
-                DesiredCapabilities capabilities = new DesiredCapabilities();
-                capabilities.setBrowserName(browser_name);
                 driver = new ChromeDriver();
                 break;
             case "firefox":
@@ -46,7 +45,7 @@ public class Hooks extends baseClass {
                 driver = new FirefoxDriver(cap);
                 break;
             case "grid":
-                //driver = new RemoteWebDriver(new URL("https://turbo-seleniumgrid.hesos.net/wd/hub"), cap);
+                //driver = new RemoteWebDriver(new URL("https://someurltoagrid/wd/hub"), cap);
 
                 break;
             default:
@@ -60,6 +59,11 @@ public class Hooks extends baseClass {
             driver.manage().window().maximize();
 
             driver.get("http://web2.0calc.com/");
+            if (driver.findElements(By.name("cookies")).size() >0)
+            {
+                driver.findElement(By.name("cookies")).click();
+            }
+
         } else {
             throw new IllegalStateException("Browser not supported!");
         }
