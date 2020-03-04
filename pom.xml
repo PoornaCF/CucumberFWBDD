@@ -58,21 +58,6 @@
 			<scope>test</scope>
 		</dependency>
 		<dependency>
-			<groupId>io.selendroid</groupId>
-			<artifactId>selendroid</artifactId>
-			<version>0.17.0</version>
-		</dependency>
-		<dependency>
-			<groupId>io.selendroid</groupId>
-			<version>0.17.0</version>
-			<artifactId>selendroid-standalone</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>io.selendroid</groupId>
-			<version>0.17.0</version>
-			<artifactId>selendroid-client</artifactId>
-		</dependency>
-		<dependency>
 			<groupId>log4j</groupId>
 			<artifactId>log4j</artifactId>
 			<version>1.2.17</version>
@@ -88,7 +73,6 @@
 			<artifactId>jackson-annotations</artifactId>
 			<version>2.10.3</version>
 		</dependency>
-
 	</dependencies>
 	<build>
 		<plugins>

@@ -3,7 +3,7 @@ Feature: Verify employees
   I want to be able to search employees
   So that I can get information
 
-  @add @subtract
+  @searchemployee
   Scenario: Verify employee name
     Given I look for employee id 2
     Then I can verify the employee city is Wisokyburgh
