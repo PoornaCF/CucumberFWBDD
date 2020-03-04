@@ -4,7 +4,10 @@ import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import helpers.baseClass;
+import org.openqa.selenium.By;
 import pageObjects.calcPage;
+
+import java.util.concurrent.TimeUnit;
 
 public class calcstepDefs extends baseClass {
     calcPage calcpage;
@@ -28,5 +31,16 @@ public class calcstepDefs extends baseClass {
         calcpage = new calcPage();
         calcpage.verifyTotal(total);
 
+    }
+
+    @Given("^I am on the calculator app$")
+    public void iAmOnTheCalculatorApp()
+    {
+        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+        driver.get("http://web2.0calc.com/");
+        if (driver.findElements(By.name("cookies")).size() >0)
+        {
+            driver.findElement(By.name("cookies")).click();
+        }
     }
 }

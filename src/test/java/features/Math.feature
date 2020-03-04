@@ -3,6 +3,9 @@ Feature: Doing Math
   I want to be able to do math functions
   So that I can get answers
 
+  Background:
+    Given I am on the calculator app
+
   @add @subtract
   Scenario Outline: Adding and subtracting numbers
     Given I have two numbers "<firstNum>" and "<secondNum>"

@@ -5,35 +5,31 @@ import cucumber.api.java.Before;
 import helpers.baseClass;
 import io.selendroid.standalone.SelendroidLauncher;
 import org.apache.log4j.Logger;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
-import java.util.List;
-import java.util.concurrent.TimeUnit;
-
-public class Hooks extends baseClass {
+public class Hooks extends baseClass
+{
     static SelendroidLauncher selendroidServer = null;
     final static Logger logger = Logger.getLogger(Hooks.class);
 
     @Before
-    public void openBrowser() {
-
-        WebDriverWait wait;
-
-
+    public void openBrowser()
+    {
         String strBrowser = null;
         boolean blnBrowserSupported = true;
-        try {
+        try
+        {
             strBrowser = System.getProperty("BROWSER").toLowerCase();
-        } catch (Exception e) {
+        }
+        catch (Exception e)
+        {
             strBrowser = "chrome";
         }
 
-        switch (strBrowser.toLowerCase()) {
+        switch (strBrowser.toLowerCase())
+        {
             case "chrome":
                 driver = new ChromeDriver();
                 break;
@@ -54,31 +50,23 @@ public class Hooks extends baseClass {
                 break;
         }
 
-        if (blnBrowserSupported) {
-            driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
-            driver.manage().window().maximize();
-
-            driver.get("http://web2.0calc.com/");
-            if (driver.findElements(By.name("cookies")).size() >0)
-            {
-                driver.findElement(By.name("cookies")).click();
-            }
-
-        } else {
+        if (!blnBrowserSupported)
+        {
             throw new IllegalStateException("Browser not supported!");
         }
-
     }
 
     @After
-    public static void shutDown() {
-        if (driver != null) {
+    public static void shutDown()
+    {
+        if (driver != null)
+        {
             driver.quit();
         }
-        if (selendroidServer != null) {
+        if (selendroidServer != null)
+        {
             selendroidServer.stopSelendroid();
         }
     }
-
 
 }
