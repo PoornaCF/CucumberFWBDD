@@ -55,11 +55,8 @@ fabric.properties
 # modules.xml
 *.log
 /pom.xml
-/target/
-target/
-
-.idea/
+**/target/
+*.DS_Store
+.idea
 /local.properties
-/.idea/workspace.xml
-/.idea/libraries
 
